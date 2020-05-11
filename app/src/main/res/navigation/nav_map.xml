@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_map"
+    app:startDestination="@id/mapFragment">
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.android.proyecto_layout.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_produccionFragment"
+            app:destination="@id/produccionFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_peticionFragment"
+            app:destination="@id/peticionFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_setFactoryFragment"
+            app:destination="@id/setFactoryFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_ventasFragment"
+            app:destination="@id/ventasFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_infoMaterialFragment"
+            app:destination="@id/infoMaterialFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_infoFactoryFragment"
+            app:destination="@id/infoFactoryFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_infoMaterialFragment2"
+            app:destination="@id/infoMaterialFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFactoryFragment"
+        android:name="com.android.proyecto_layout.InfoFactoryFragment"
+        android:label="fragment_info_factory"
+        tools:layout="@layout/fragment_info_factory" />
+    <fragment
+        android:id="@+id/infoMaterialFragment"
+        android:name="com.android.proyecto_layout.InfoMaterialFragment"
+        android:label="fragment_info_material"
+        tools:layout="@layout/fragment_info_material" />
+    <fragment
+        android:id="@+id/ventasFragment"
+        android:name="com.android.proyecto_layout.VentasFragment"
+        android:label="fragment_ventas"
+        tools:layout="@layout/fragment_ventas" >
+        <action
+            android:id="@+id/action_ventasFragment_to_infoFactoryFragment"
+            app:destination="@id/infoFactoryFragment" />
+        <action
+            android:id="@+id/action_ventasFragment_to_infoFactoryFragment2"
+            app:destination="@id/infoFactoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.android.proyecto_layout.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/produccionFragment"
+        android:name="com.android.proyecto_layout.ProduccionFragment"
+        android:label="fragment_produccion"
+        tools:layout="@layout/fragment_produccion" >
+        <action
+            android:id="@+id/action_produccionFragment_to_infoMaterialFragment"
+            app:destination="@id/infoMaterialFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/peticionFragment"
+        android:name="com.android.proyecto_layout.PeticionFragment"
+        android:label="fragment_peticion"
+        tools:layout="@layout/fragment_peticion" >
+        <action
+            android:id="@+id/action_peticionFragment_to_infoMaterialFragment"
+            app:destination="@id/infoMaterialFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setFactoryFragment"
+        android:name="com.android.proyecto_layout.SetFactoryFragment"
+        android:label="fragment_set_factory"
+        tools:layout="@layout/fragment_set_factory" >
+        <action
+            android:id="@+id/action_setFactoryFragment_to_infoFactoryFragment"
+            app:destination="@id/infoFactoryFragment" />
+    </fragment>
+</navigation>
