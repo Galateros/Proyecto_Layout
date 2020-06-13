@@ -4,4 +4,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_nav_d">NavDActivity</string>
+    <string name="title_home">Item</string>
+    <string name="title_dashboard">Producción</string>
+    <string name="title_notifications">Ventas</string>
+    <string name="title_perfil">Perfil</string>
 </resources>

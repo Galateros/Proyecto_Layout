@@ -11,21 +11,29 @@ import androidx.navigation.findNavController
 /**
  * A simple [Fragment] subclass.
  */
-class SetFactoryFragment : Fragment() {
+class StadisticFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_set_factory, container, false)
+        return inflater.inflate(R.layout.fragment_s, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val con: Button = view.findViewById(R.id.con)
-        con.setOnClickListener{
-            view.findNavController().navigate(R.id.stadisticFragment)
+        val op1: Button = view.findViewById(R.id.op1)
+        op1.setOnClickListener{
+            view.findNavController().navigate(R.id.infoFactoryFragment)
+        }
+        val op2: Button = view.findViewById(R.id.op2)
+        op2.setOnClickListener{
+            view.findNavController().navigate(R.id.infoFactoryFragment)
+        }
+        val op3: Button = view.findViewById(R.id.op3)
+        op3.setOnClickListener{
+            view.findNavController().navigate(R.id.infoFactoryFragment)
         }
 
         val item: Button = view.findViewById(R.id.item)
@@ -45,4 +53,5 @@ class SetFactoryFragment : Fragment() {
             view.findNavController().navigate(R.id.perfilFragment)
         }
     }
+
 }

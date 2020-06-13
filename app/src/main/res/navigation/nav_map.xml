@@ -86,7 +86,16 @@
         android:label="fragment_set_factory"
         tools:layout="@layout/fragment_set_factory" >
         <action
-            android:id="@+id/action_setFactoryFragment_to_infoFactoryFragment"
+            android:id="@+id/action_setFactoryFragment_to_stadisticFragment"
+            app:destination="@id/stadisticFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stadisticFragment"
+        android:name="com.android.proyecto_layout.StadisticFragment"
+        android:label="fragment_stadistic"
+        tools:layout="@layout/fragment_s" >
+        <action
+            android:id="@+id/action_stadisticFragment_to_infoFactoryFragment"
             app:destination="@id/infoFactoryFragment" />
     </fragment>
 </navigation>

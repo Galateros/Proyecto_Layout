@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfoFactoryFragment">
+    tools:context=".InfoFactoryFragment"
+    android:background="#000">
 
     <TextView
         android:id="@+id/textView9"
@@ -22,7 +23,7 @@
         android:id="@+id/imageView3"
         android:layout_width="149dp"
         android:layout_height="211dp"
-        android:layout_marginBottom="416dp"
+        android:layout_marginBottom="436dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,60 +34,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Descripcion"
-        android:textSize="20dp"
         android:textColor="#FFF"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ejemplo@ejemplo.com"
-        android:textSize="20dp"
         android:textColor="#FFF"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.337" />
+        app:layout_constraintVertical_bias="0.268" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Produccion por hora"
-        android:textSize="20dp"
         android:textColor="#FFF"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.217" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="12/hr"
-        android:textSize="20dp"
         android:textColor="#FFF"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintHorizontal_bias="0.279"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.371" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="406dp"
-        android:layout_height="wrap_content"
+        android:layout_height="128dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +102,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Item"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/place_24px"/>
 
         <Button
             android:id="@+id/produccion"
@@ -109,20 +111,25 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="produccion"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/handyman_24px"/>
+
         <Button
             android:id="@+id/ventas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Ventas"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/local_atm_24px"/>
+
         <Button
             android:id="@+id/perfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Perfil"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/face_24px"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

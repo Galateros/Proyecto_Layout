@@ -42,7 +42,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="411dp"
-        android:layout_height="97dp"
+        android:layout_height="126dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Item"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/place_24px"/>
 
         <Button
             android:id="@+id/produccion"
@@ -65,7 +66,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="produccion"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/handyman_24px"/>
 
         <Button
             android:id="@+id/ventas"
@@ -73,7 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Ventas"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/local_atm_24px"/>
 
         <Button
             android:id="@+id/perfil"
@@ -81,7 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Perfil"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/face_24px"/>
     </LinearLayout>
 
     <Button

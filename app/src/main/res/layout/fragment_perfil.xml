@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PerfilFragment">
+    tools:context=".PerfilFragment"
+    android:background="#000">
 
 
     <ImageView
@@ -47,12 +48,12 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="84dp"
         android:text="Cerrar Sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.319" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="406dp"
@@ -71,7 +72,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Item"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/place_24px"/>
 
         <Button
             android:id="@+id/produccion"
@@ -79,20 +81,23 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="produccion"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/handyman_24px"/>
         <Button
             android:id="@+id/ventas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Ventas"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/local_atm_24px"/>
         <Button
             android:id="@+id/perfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Perfil"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/face_24px"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
