@@ -15,17 +15,19 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         //var nav = supportFragmentManager.findFragmentById(R.id.fragment2)
+        Set()
 
         findNavController(R.id.fragment)
 
     }
 
     public fun Set (){
-
+        userid = intent.getStringExtra("UserID")
+        //println(userid+"---------------------------------------------------------------------------------")
     }
 
     public fun Get(): String{
 
-        return "Hello"
+        return userid
     }
 }
