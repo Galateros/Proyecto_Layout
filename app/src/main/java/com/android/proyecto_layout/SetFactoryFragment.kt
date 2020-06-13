@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.navigation.findNavController
+import com.google.firebase.database.FirebaseDatabase
 
 /**
  * A simple [Fragment] subclass.
@@ -22,11 +24,22 @@ class SetFactoryFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        var database = FirebaseDatabase.getInstance().reference
         super.onViewCreated(view, savedInstanceState)
         val con: Button = view.findViewById(R.id.con)
         con.setOnClickListener{
             view.findNavController().navigate(R.id.stadisticFragment)
+
+            var factory:Fabrica = Fabrica("", "", "", "")
+            val nombre: EditText = view.findViewById(R.id.editText9)
+
+            val key = database.child("user").push().key
+            factory.id = key!!
+            factory.nombre = nombre.text.toString()
+
         }
+
+
 
         val item: Button = view.findViewById(R.id.item)
         item.setOnClickListener{
