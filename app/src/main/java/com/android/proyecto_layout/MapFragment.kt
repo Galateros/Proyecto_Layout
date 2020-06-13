@@ -40,13 +40,27 @@ class MapFragment : Fragment(),OnMapReadyCallback{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val peticion: Button = view.findViewById(R.id.petition)
+
+        val diractivity:LoginActivity = activity as LoginActivity
+
         peticion.setOnClickListener{
             view.findNavController().navigate(R.id.peticionFragment)
+
         }
+
         val nfabrica: Button = view.findViewById(R.id.factory)
         nfabrica.setOnClickListener{
+            // almacenar localización
+
+            diractivity.setLocalizacion("98.34","104.25")
+
+            val localizationX = diractivity.getLocalizacionX()
+            val localizationY = diractivity.getLocalizacionY()
+
             view.findNavController().navigate(R.id.setFactoryFragment)
         }
+
+
         val item: Button = view.findViewById(R.id.item)
         item.setOnClickListener{
             //view.findNavController().navigate(R.id.mapFragment)

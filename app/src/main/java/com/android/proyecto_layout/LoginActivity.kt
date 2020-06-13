@@ -11,6 +11,8 @@ class LoginActivity : AppCompatActivity() {
     public var userid:String=""
     public var factoryid:String=""
     public var materialid:String=""
+    public var localizationX = ""
+    public var localizationY = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +23,17 @@ class LoginActivity : AppCompatActivity() {
 
         findNavController(R.id.fragment)
 
+    }
+    public fun setLocalizacion(x:String, y:String){
+        localizationX = x
+        localizationY = y
+    }
+
+    public fun getLocalizacionX():String{
+        return localizationX
+    }
+    public fun getLocalizacionY():String{
+        return localizationY
     }
 
     public fun Set (){

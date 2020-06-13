@@ -34,6 +34,7 @@ class PeticionFragment : Fragment() {
             view.findNavController().navigate(R.id.mapFragment)
 
             val diractivity:LoginActivity = activity as LoginActivity
+
             var material:Ventas = Ventas("", "", "", null, null, "")
             val nombre: EditText = view.findViewById(R.id.editText5)
             val desc: EditText = view.findViewById(R.id.editText4)

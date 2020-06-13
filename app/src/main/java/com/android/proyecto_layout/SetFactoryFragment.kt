@@ -33,7 +33,7 @@ class SetFactoryFragment : Fragment() {
             view.findNavController().navigate(R.id.stadisticFragment)
             val diractivity:LoginActivity = activity as LoginActivity
 
-            var factory:Fabrica = Fabrica("", "", "", "")
+            var factory:Fabrica = Fabrica("", "", "", "","", "")
             val nombre: EditText = view.findViewById(R.id.editText9)
             val desc: EditText = view.findViewById(R.id.descripcion)
 
@@ -42,6 +42,10 @@ class SetFactoryFragment : Fragment() {
             factory.nombre = nombre.text.toString()
             factory.descripcion = desc.text.toString()
             factory.userid= diractivity.Get()
+            factory.locationX = diractivity.getLocalizacionX()
+            factory.locationY = diractivity.getLocalizacionY()
+
+
             database.child("Fabrica").child(key!!).setValue(factory)
 
         }
