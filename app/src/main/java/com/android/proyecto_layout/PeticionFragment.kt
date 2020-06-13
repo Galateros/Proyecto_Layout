@@ -45,7 +45,8 @@ class PeticionFragment : Fragment() {
             material.descripcion = desc.text.toString()
             material.cantidad=cantidad.text.toString().toInt()
             material.pagounidad=pago.text.toString().toInt()
-
+            material.userid=LoginActivity().Get()
+            database.child("Ventas").child(key!!).setValue(material)
 
         }
 

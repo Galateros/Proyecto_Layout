@@ -40,6 +40,8 @@ class SetFactoryFragment : Fragment() {
             factory.id = key!!
             factory.nombre = nombre.text.toString()
             factory.descripcion = desc.text.toString()
+            factory.userid= LoginActivity().Get()
+            database.child("Fabrica").child(key!!).setValue(factory)
 
         }
 
