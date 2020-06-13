@@ -37,7 +37,7 @@ class SetFactoryFragment : Fragment() {
             val nombre: EditText = view.findViewById(R.id.editText9)
             val desc: EditText = view.findViewById(R.id.descripcion)
 
-            val key = database.child("user").push().key
+            val key = database.child("Fabrica").push().key
             factory.id = key!!
             factory.nombre = nombre.text.toString()
             factory.descripcion = desc.text.toString()
@@ -47,6 +47,8 @@ class SetFactoryFragment : Fragment() {
 
 
             database.child("Fabrica").child(key!!).setValue(factory)
+
+            database.child("FabricaSt").child(key!!).setValue(factory)
 
         }
 
