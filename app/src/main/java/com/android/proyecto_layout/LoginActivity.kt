@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     public fun Set (){
-        
+
     }
 
     public fun Get(): String{
