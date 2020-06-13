@@ -13,6 +13,8 @@ import android.widget.EditText
 import androidx.navigation.findNavController
 import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import org.json.JSONObject
 import java.security.MessageDigest
 
 // TODO: Rename parameter arguments, choose names that match
@@ -38,8 +40,47 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val login: Button = view.findViewById(R.id.entrar)
         login.setOnClickListener{
+            var username: EditText = view.findViewById(R.id.editText)
+            var pass: EditText = view.findViewById(R.id.editText2)
+
+            var database:DatabaseReference = FirebaseDatabase.getInstance().reference
+            database.child("user").addValueEventListener(object : ValueEventListener {
+
+                fun hashWithAlgorithm(key: String): String {
+                    val digest = MessageDigest.getInstance("SHA-512")
+                    val bytes = digest.digest(key.toByteArray(Charsets.UTF_8))
+                    return bytes.fold("", { str, it -> str + "%02x".format(it) })
+                }
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (postSnapshot in dataSnapshot.children) {
+
+                        //println("Snapshot "+ postSnapshot.value)
+                        val js = JSONObject(postSnapshot.value.toString())
+                        if (js.get("email") == username.text.toString()){
+                            val password = hashWithAlgorithm(pass.text.toString())
+                            if(js.get("pass") == password){
+                                println("The Password is True");
+                                val i = Intent(context, LoginActivity::class.java)
+                                val id:String = js.get("id") as String
+                                i.putExtra("UserID",id)
+                                startActivity(i)
+                            }else{
+                                println("The Password is False");
+                            }
+                        }
+                        println(js.get("email"))
+
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    println("loadPost:onCancelled: " + databaseError.toException())
+
+                }
+            })
             val i = Intent(context, LoginActivity::class.java)
-            startActivity(i)
+            //startActivity(i)
         }
 
         val register: Button = view.findViewById(R.id.register)
