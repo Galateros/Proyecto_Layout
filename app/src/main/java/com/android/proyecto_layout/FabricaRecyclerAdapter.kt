@@ -8,12 +8,18 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 
+
 class FabricaRecyclerAdapter( private val list: List<Fabrica>)
     : RecyclerView.Adapter<ItemViewHolder>() {
+    var diractivity:LoginActivity = LoginActivity()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
+
+        diractivity = parent.context as LoginActivity
+
         return ItemViewHolder(inflater, parent)
+
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
@@ -21,7 +27,7 @@ class FabricaRecyclerAdapter( private val list: List<Fabrica>)
         holder.bind(item)
         holder.itemView.setOnClickListener {
 
-            
+            diractivity.Setfactory(item.id.toString())
 
             it.findNavController().navigate(R.id.infoFactoryFragment)
 
