@@ -33,6 +33,7 @@ class PeticionFragment : Fragment() {
         con.setOnClickListener{
             view.findNavController().navigate(R.id.mapFragment)
 
+            val diractivity:LoginActivity = activity as LoginActivity
             var material:Ventas = Ventas("", "", "", null, null, "")
             val nombre: EditText = view.findViewById(R.id.editText5)
             val desc: EditText = view.findViewById(R.id.editText4)
@@ -45,7 +46,7 @@ class PeticionFragment : Fragment() {
             material.descripcion = desc.text.toString()
             material.cantidad=cantidad.text.toString().toInt()
             material.pagounidad=pago.text.toString().toInt()
-            material.userid=LoginActivity().Get()
+            material.userid=diractivity.Get()
             database.child("Ventas").child(key!!).setValue(material)
 
         }

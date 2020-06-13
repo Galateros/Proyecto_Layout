@@ -9,6 +9,8 @@ import androidx.navigation.findNavController
 class LoginActivity : AppCompatActivity() {
 
     public var userid:String=""
+    public var factoryid:String=""
+    public var materialid:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,5 +31,21 @@ class LoginActivity : AppCompatActivity() {
     public fun Get(): String{
 
         return userid
+    }
+
+    public fun Setfactory(valor: String){
+        factoryid= valor
+    }
+
+    public fun Getfactory():String{
+        return factoryid
+    }
+
+    public fun Setmaterial(valor: String){
+        materialid= valor
+    }
+
+    public fun Getmaterial():String{
+        return materialid
     }
 }

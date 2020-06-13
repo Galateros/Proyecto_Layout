@@ -31,6 +31,7 @@ class SetFactoryFragment : Fragment() {
         val con: Button = view.findViewById(R.id.con)
         con.setOnClickListener{
             view.findNavController().navigate(R.id.stadisticFragment)
+            val diractivity:LoginActivity = activity as LoginActivity
 
             var factory:Fabrica = Fabrica("", "", "", "")
             val nombre: EditText = view.findViewById(R.id.editText9)
@@ -40,7 +41,7 @@ class SetFactoryFragment : Fragment() {
             factory.id = key!!
             factory.nombre = nombre.text.toString()
             factory.descripcion = desc.text.toString()
-            factory.userid= LoginActivity().Get()
+            factory.userid= diractivity.Get()
             database.child("Fabrica").child(key!!).setValue(factory)
 
         }

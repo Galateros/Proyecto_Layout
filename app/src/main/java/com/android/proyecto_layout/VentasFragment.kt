@@ -54,6 +54,9 @@ class VentasFragment : Fragment() {
         }
         getProducts()
     }
+
+
+
     public fun getProducts(){
         val ref = FirebaseDatabase.getInstance().getReference("/Ventas")
 

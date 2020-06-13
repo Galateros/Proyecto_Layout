@@ -20,8 +20,13 @@ class FabricaRecyclerAdapter( private val list: List<Fabrica>)
         val item: Fabrica = list[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
+
+            
+
             it.findNavController().navigate(R.id.infoFactoryFragment)
+
         }
+
     }
 
     override fun getItemCount(): Int = list.size
