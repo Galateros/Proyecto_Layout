@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.navigation.findNavController
+import com.google.firebase.database.FirebaseDatabase
 
 /**
  * A simple [Fragment] subclass.
@@ -22,10 +24,29 @@ class PeticionFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        var database = FirebaseDatabase.getInstance().reference
+
         super.onViewCreated(view, savedInstanceState)
+
+
         val con: Button = view.findViewById(R.id.con)
         con.setOnClickListener{
             view.findNavController().navigate(R.id.mapFragment)
+
+            var material:Ventas = Ventas("", "", "", null, null, "")
+            val nombre: EditText = view.findViewById(R.id.editText5)
+            val desc: EditText = view.findViewById(R.id.editText4)
+            val cantidad: EditText = view.findViewById(R.id.editText7)
+            val pago: EditText=view.findViewById(R.id.editText8)
+
+            val key = database.child("user").push().key
+            material.id = key!!
+            material.nombre = nombre.text.toString()
+            material.descripcion = desc.text.toString()
+            material.cantidad=cantidad.text.toString().toInt()
+            material.pagounidad=pago.text.toString().toInt()
+
+
         }
 
         val item: Button = view.findViewById(R.id.item)

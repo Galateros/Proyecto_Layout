@@ -26,16 +26,20 @@ class SetFactoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var database = FirebaseDatabase.getInstance().reference
         super.onViewCreated(view, savedInstanceState)
+
+
         val con: Button = view.findViewById(R.id.con)
         con.setOnClickListener{
             view.findNavController().navigate(R.id.stadisticFragment)
 
             var factory:Fabrica = Fabrica("", "", "", "")
             val nombre: EditText = view.findViewById(R.id.editText9)
+            val desc: EditText = view.findViewById(R.id.descripcion)
 
             val key = database.child("user").push().key
             factory.id = key!!
             factory.nombre = nombre.text.toString()
+            factory.descripcion = desc.text.toString()
 
         }
 

@@ -102,4 +102,22 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.195" />
 
+    <EditText
+        android:id="@+id/descripcion"
+        android:layout_width="210dp"
+        android:layout_height="124dp"
+        android:background="#FFF"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="Descripción"
+        android:inputType="textPersonName"
+        android:textColor="#000"
+        android:textColorHint="#000"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText9"
+        app:layout_constraintVertical_bias="0.374" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
