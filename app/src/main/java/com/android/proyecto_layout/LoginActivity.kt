@@ -8,6 +8,8 @@ import androidx.navigation.findNavController
 
 class LoginActivity : AppCompatActivity() {
 
+    public var userid:String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -16,5 +18,14 @@ class LoginActivity : AppCompatActivity() {
 
         findNavController(R.id.fragment)
 
+    }
+
+    public fun Set (){
+        
+    }
+
+    public fun Get(): String{
+
+        return "Hello"
     }
 }
