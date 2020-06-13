@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 
 class VentasRecyclerAdapter( private val list: List<Ventas>)
     : RecyclerView.Adapter<VentaViewHolder>() {
-
+    var diractivity:LoginActivity = LoginActivity()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VentaViewHolder {
         val inflater = LayoutInflater.from(parent.context)
+        diractivity = parent.context as LoginActivity
         return VentaViewHolder(inflater, parent)
     }
 
@@ -20,6 +21,7 @@ class VentasRecyclerAdapter( private val list: List<Ventas>)
         val item: Ventas = list[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
+            diractivity.Setmaterial(item.id.toString())
             it.findNavController().navigate(R.id.infoMaterialFragment)
         }
     }
