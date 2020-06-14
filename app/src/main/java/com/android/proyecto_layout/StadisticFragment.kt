@@ -40,7 +40,7 @@ class StadisticFragment : Fragment() {
 
         val refLAct: LoginActivity = activity as LoginActivity
         val id = refLAct.Getfactory()
-
+        var database = FirebaseDatabase.getInstance().reference
         val per1 : TextView = view.findViewById(R.id.textView24)
         val per2 : TextView = view.findViewById(R.id.textView25)
         val per3 : TextView = view.findViewById(R.id.textView26)
@@ -79,14 +79,17 @@ class StadisticFragment : Fragment() {
 
 
         op1.setOnClickListener{
+            database.child("Fabrica").child(id).child("descripcion").setValue("Madera")
             view.findNavController().navigate(R.id.infoFactoryFragment)
         }
         val op2: Button = view.findViewById(R.id.op2)
         op2.setOnClickListener{
+            database.child("Fabrica").child(id).child("descripcion").setValue("Metal")
             view.findNavController().navigate(R.id.infoFactoryFragment)
         }
         val op3: Button = view.findViewById(R.id.op3)
         op3.setOnClickListener{
+            database.child("Fabrica").child(id).child("descripcion").setValue("Carbon")
             view.findNavController().navigate(R.id.infoFactoryFragment)
         }
 
