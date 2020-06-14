@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_map.*
 import org.json.JSONObject
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -163,8 +164,45 @@ class MapFragment : Fragment(),OnMapReadyCallback{
 
 
 
+            val ref2 = FirebaseDatabase.getInstance().getReference("/Venta/")
+            val listener2 = object : ValueEventListener
+            {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (postSnapshot in dataSnapshot.children) {
 
+                        // val js = (postSnapshot.value.toString())
+                        // println(js)
+                        val materiales = LatLng(postSnapshot.child("/locationX").getValue().toString().toDouble(), postSnapshot.child("/locationY").getValue().toString().toDouble())
 
+                        googleMap.addMarker(
+                            MarkerOptions()
+                                .position(materiales)
+                                .title("")
+                        )
+
+                        googleMap.setOnMarkerClickListener { marker ->
+                            if (marker.isInfoWindowShown) {
+                                marker.hideInfoWindow()
+                                Log.v("WAAAAAAGH","-------------------MarkerClick----------------------------")
+                            } else {
+                                marker.showInfoWindow()
+                                Log.v("WAAAAAAGH","-------------------MarkerClick2----------------------------")
+                                diractivity.Setfactory(postSnapshot.child("/id").getValue().toString())
+                                view?.findNavController()?.navigate(R.id.infoMaterialFragment)
+                            }
+                            true
+                        }
+
+                    }
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Getting Post failed, log a message
+                    Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
+                    // ...
+                }
+
+            }
+            ref2.addValueEventListener(listener2)
 
 
         }
@@ -185,6 +223,7 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                 val currentLatLng = LatLng(location.latitude, location.longitude)
                 map?.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
                 diractivity.setLocalizacion(location.latitude.toString(),location.longitude.toString())
+                diractivity.setLocalizacionM(location.latitude.toString(),location.longitude.toString())
             }
         }
 

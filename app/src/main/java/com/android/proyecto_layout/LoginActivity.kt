@@ -17,6 +17,8 @@ class LoginActivity : AppCompatActivity() {
     public var materialid:String=""
     public var localizationX = ""
     public var localizationY = ""
+    public var localizationXM = ""
+    public var localizationYM = ""
 
 
 
@@ -45,6 +47,18 @@ class LoginActivity : AppCompatActivity() {
     }
     public fun getLocalizacionY():String{
         return localizationY
+    }
+
+    public fun setLocalizacionM(x:String, y:String){
+        localizationXM = x
+        localizationYM = y
+    }
+
+    public fun getLocalizacionXM():String{
+        return localizationXM
+    }
+    public fun getLocalizacionYM():String{
+        return localizationYM
     }
 
     public fun Set (){

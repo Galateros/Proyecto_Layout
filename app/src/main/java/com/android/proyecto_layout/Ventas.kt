@@ -7,5 +7,7 @@ data class Ventas (
     var nombre: String? = null,
     var cantidad: Int? = null,
     var pagounidad: Int? = null,
+    var locationX: String = "",
+    var locationY: String = "",
     var userid: String = ""
 )

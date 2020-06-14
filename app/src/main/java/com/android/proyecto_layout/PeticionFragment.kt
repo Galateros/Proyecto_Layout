@@ -35,7 +35,7 @@ class PeticionFragment : Fragment() {
 
             val diractivity:LoginActivity = activity as LoginActivity
 
-            var material:Ventas = Ventas("", "", "", null, null, "")
+            var material:Ventas = Ventas("", "", "", null, null, "", "", "")
             val nombre: EditText = view.findViewById(R.id.editText5)
             val desc: EditText = view.findViewById(R.id.editText4)
             val cantidad: EditText = view.findViewById(R.id.editText7)
@@ -48,6 +48,8 @@ class PeticionFragment : Fragment() {
             material.cantidad=cantidad.text.toString().toInt()
             material.pagounidad=pago.text.toString().toInt()
             material.userid=diractivity.Get()
+            material.locationX = diractivity.getLocalizacionXM()
+            material.locationY = diractivity.getLocalizacionYM()
             database.child("Ventas").child(key!!).setValue(material)
 
         }
