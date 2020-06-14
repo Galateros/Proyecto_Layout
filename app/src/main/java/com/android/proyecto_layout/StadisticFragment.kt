@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.findNavController
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -40,62 +41,27 @@ class StadisticFragment : Fragment() {
         val refLAct: LoginActivity = activity as LoginActivity
         val id = refLAct.Getfactory()
 
-        //val jsonGet = URL("https://189.147.92.77:25565/factories/" + id).readText()
-        //val jsonPost = URL("https://189.147.92.77:25565/factories").readText()
-        //println(jsonPost)
+        val per1 : TextView = view.findViewById(R.id.textView24)
+        val per2 : TextView = view.findViewById(R.id.textView25)
+        val per3 : TextView = view.findViewById(R.id.textView26)
 
-
-
-      /* fun sendPostRequest(id: String,name:String, locationX:String, locationY:String) { //id name locationX locationY
-
-            var reqParam = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8")
-            reqParam += "&" + URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8")
-            reqParam += "&" + URLEncoder.encode("locationX", "UTF-8") + "=" + URLEncoder.encode(locationX, "UTF-8")
-            reqParam += "&" + URLEncoder.encode("locationY", "UTF-8") + "=" + URLEncoder.encode(locationY, "UTF-8")
-
-            val mURL = URL("https://189.147.92.77:25565/factories")
-
-            with(mURL.openConnection() as HttpURLConnection) {
-                // optional default is GET
-                requestMethod = "POST"
-
-                val wr = OutputStreamWriter(getOutputStream());
-                wr.write(reqParam);
-                wr.flush();
-
-                println("URL : $url")
-                println("Response Code : $responseCode")
-
-                BufferedReader(InputStreamReader(inputStream)).use {
-                    val response = StringBuffer()
-
-                    var inputLine = it.readLine()
-                    while (inputLine != null) {
-                        response.append(inputLine)
-                        inputLine = it.readLine()
-                    }
-                    println("Response : $response")
-                }
-            }
-        }*/
-
-        val ref = FirebaseDatabase.getInstance().getReference("/Ventas/" + id)
+        val ref = FirebaseDatabase.getInstance().getReference("/FabricaSt/" + id)
         val listener = object : ValueEventListener
         {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (postSnapshot in dataSnapshot.children) {
-                    if(postSnapshot.key.toString() == "nombre"){
-                        var name = postSnapshot.getValue().toString()
+                    if(postSnapshot.key.toString() == "mat1"){
+                        per1.text = postSnapshot.getValue().toString()
                     }
 
-                    if(postSnapshot.key.toString() == "locationX"){
-                        var locationX = postSnapshot.getValue().toString()
+                    if(postSnapshot.key.toString() == "mat2"){
+                        per2.text = postSnapshot.getValue().toString()
                     }
-                    if(postSnapshot.key.toString() == "locationY"){
-                        var locationY = postSnapshot.getValue().toString()
+                    if(postSnapshot.key.toString() == "mat3"){
+                        per3.text = postSnapshot.getValue().toString()
                     }
 
-                    println(postSnapshot)
+                    println(postSnapshot.value)
 
                 }
             }

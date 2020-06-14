@@ -45,6 +45,7 @@ class SetFactoryFragment : Fragment() {
             factory.locationX = diractivity.getLocalizacionX()
             factory.locationY = diractivity.getLocalizacionY()
 
+            diractivity.Setfactory(factory.id.toString())
 
             database.child("Fabrica").child(key!!).setValue(factory)
 
