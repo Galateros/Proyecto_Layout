@@ -31,7 +31,7 @@ class InfoMaterialFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val item: Button = view.findViewById(R.id.item)
-
+        var database = FirebaseDatabase.getInstance().reference
 
         val refLAct: LoginActivity = activity as LoginActivity
         val id = refLAct.Getmaterial()
@@ -39,8 +39,27 @@ class InfoMaterialFragment : Fragment() {
         val material: TextView = view.findViewById(R.id.textView18)
         val cantidad : TextView = view.findViewById(R.id.textView20)
         val resolver: Button = view.findViewById(R.id.resolver)
+        var userid: String = ""
+        resolver.visibility = View.GONE
 
         val ref = FirebaseDatabase.getInstance().getReference("/Ventas/" + id)
+        var rest : Boolean = false
+
+        fun checkresolver(iduser: String, idactualuser: String, res:Boolean){
+
+            println("user id" + iduser + "other user id" + idactualuser + "resolver" + res)
+
+            if(iduser != idactualuser && res == false){
+                resolver.visibility = View.VISIBLE
+            }
+            if(iduser == idactualuser || res == true){
+                resolver.visibility = View.GONE
+            }
+
+
+        }
+
+
 
         val listener = object : ValueEventListener
         {
@@ -59,21 +78,16 @@ class InfoMaterialFragment : Fragment() {
                     if(postSnapshot.key.toString()=="cantidad"){
                         cantidad.text = postSnapshot.getValue().toString()
                     }
-                    if(postSnapshot.key.toString() == "resuelto") {
-                        if (id != refLAct.Get() && postSnapshot.getValue() == false) {
-                            resolver.setVisibility(View.VISIBLE)
-                        }
-                        if (id == refLAct.Get() || postSnapshot.getValue() == true) {
-                            resolver.setVisibility(View.GONE)
-
-                        }
+                    if(postSnapshot.key.toString()=="userid"){
+                        userid= postSnapshot.getValue().toString()
+                        println("useeeeer"+postSnapshot.getValue().toString())
+                        println("us" + userid)
                     }
-
-                    resolver.setOnClickListener {
-                        
+                    if(postSnapshot.key.toString() == "resuelto"){
+                       rest = postSnapshot.getValue().toString().toBoolean()
                     }
-
                     println(postSnapshot)
+                    checkresolver(userid, refLAct.Get(), rest)
 
                 }
             }
@@ -87,6 +101,12 @@ class InfoMaterialFragment : Fragment() {
 
         ref.addValueEventListener(listener)
 
+
+        resolver.setOnClickListener {
+            rest = true
+            database.child("Ventas").child(id).child("resuelto").setValue(rest)
+
+        }
 
 
         item.setOnClickListener{
@@ -105,5 +125,7 @@ class InfoMaterialFragment : Fragment() {
             view.findNavController().navigate(R.id.perfilFragment)
         }
     }
+
+
 
 }
