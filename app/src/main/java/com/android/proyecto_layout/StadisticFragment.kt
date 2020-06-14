@@ -51,14 +51,14 @@ class StadisticFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (postSnapshot in dataSnapshot.children) {
                     if(postSnapshot.key.toString() == "mat1"){
-                        per1.text = postSnapshot.getValue().toString()
+                        per1.text = postSnapshot.getValue().toString()+"%"
                     }
 
                     if(postSnapshot.key.toString() == "mat2"){
-                        per2.text = postSnapshot.getValue().toString()
+                        per2.text = postSnapshot.getValue().toString()+"%"
                     }
                     if(postSnapshot.key.toString() == "mat3"){
-                        per3.text = postSnapshot.getValue().toString()
+                        per3.text = postSnapshot.getValue().toString()+"%"
                     }
 
                     println(postSnapshot.value)
