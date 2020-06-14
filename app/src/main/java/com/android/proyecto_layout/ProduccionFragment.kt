@@ -1,5 +1,6 @@
 package com.android.proyecto_layout
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -23,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_produccion.*
  * A simple [Fragment] subclass.
  */
 class ProduccionFragment : Fragment() {
-
+    var str:String = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,25 +60,42 @@ class ProduccionFragment : Fragment() {
         }
         getProducts()
     }
+
+    public fun setReady(inp:String){
+        str = inp
+    }
+    public fun getReady():String{
+        return str
+    }
     public fun getProducts(){
+        println("There is a product call")
         val ref = FirebaseDatabase.getInstance().getReference("/Fabrica")
+        var lateList = mutableListOf<Fabrica>()
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
+                println("There is a data change")
                 val list = mutableListOf<Fabrica>()
                 p0.children.forEach {
                     val product = it.getValue(Fabrica::class.java)
                     list.add(product!!)
-
+                    println(product)
                 }
-                list_recycler_view.adapter = FabricaRecyclerAdapter(list)
+                if(list.isNotEmpty()){
+                    lateList = list;
+                }
+                if (view != null){
+                    list_recycler_view.adapter = FabricaRecyclerAdapter(lateList)
+                }
+
             }
 
 
         } )
+
     }
 
 

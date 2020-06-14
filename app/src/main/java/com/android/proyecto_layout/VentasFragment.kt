@@ -71,7 +71,10 @@ class VentasFragment : Fragment() {
                     list.add(product!!)
 
                 }
-                list_recycler_view.adapter = VentasRecyclerAdapter(list)
+                if (view != null){
+                    list_recycler_view.adapter = VentasRecyclerAdapter(list)
+                }
+
             }
 
 

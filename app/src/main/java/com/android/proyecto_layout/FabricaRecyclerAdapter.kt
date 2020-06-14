@@ -53,7 +53,7 @@ class ItemViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     }
 
     fun bind(item: Fabrica) {
-        Log.i("Error despensa",item.nombre.toString() )
+        Log.i("Error fabrica",item.nombre.toString() )
         cantidadItemTextView?.text = item.nombre
         itemDescripcionTextView?.text = item.descripcion
 
