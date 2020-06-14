@@ -39,9 +39,6 @@ class InfoFactoryFragment : Fragment() {
 
         val ref = FirebaseDatabase.getInstance().getReference("/Fabrica/" + id)
 
-
-
-
         val listener = object : ValueEventListener
         {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

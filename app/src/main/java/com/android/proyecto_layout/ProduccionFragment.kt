@@ -42,7 +42,7 @@ class ProduccionFragment : Fragment() {
         }
         val produccion: Button = view.findViewById(R.id.produccion)
         produccion.setOnClickListener{
-            //view.findNavController().navigate(R.id.produccionFragment)
+            view.findNavController().navigate(R.id.produccionFragment)
         }
         val ventas: Button = view.findViewById(R.id.ventas)
         ventas.setOnClickListener{

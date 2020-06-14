@@ -1,5 +1,6 @@
 package com.android.proyecto_layout
 
+import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -18,7 +19,12 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_map.*
+import org.json.JSONObject
 
 /**
  * A simple [Fragment] subclass.
@@ -111,18 +117,53 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                 )
             )
 
+            val diractivity:LoginActivity = activity as LoginActivity
+            val ref = FirebaseDatabase.getInstance().getReference("/Fabrica/")
+            val listener = object : ValueEventListener
+            {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (postSnapshot in dataSnapshot.children) {
 
-            googleMap.setOnMarkerClickListener { marker ->
-                if (marker.isInfoWindowShown) {
-                    marker.hideInfoWindow()
-                    Log.v("WAAAAAAGH","-------------------MarkerClick----------------------------")
-                } else {
-                    marker.showInfoWindow()
-                    Log.v("WAAAAAAGH","-------------------MarkerClick2----------------------------")
-                    view?.findNavController()?.navigate(R.id.infoFactoryFragment)
+                       // val js = (postSnapshot.value.toString())
+                       // println(js)
+                        val fabricas = LatLng(postSnapshot.child("/locationX").getValue().toString().toDouble(), postSnapshot.child("/locationY").getValue().toString().toDouble())
+
+                        googleMap.addMarker(
+                            MarkerOptions()
+                                .position(fabricas)
+                                .title(""))
+
+                        googleMap.setOnMarkerClickListener { marker ->
+                            if (marker.isInfoWindowShown) {
+                                marker.hideInfoWindow()
+                                Log.v("WAAAAAAGH","-------------------MarkerClick----------------------------")
+                            } else {
+                                marker.showInfoWindow()
+                                Log.v("WAAAAAAGH","-------------------MarkerClick2----------------------------")
+                                diractivity.Setfactory(postSnapshot.child("/id").getValue().toString())
+                                view?.findNavController()?.navigate(R.id.infoFactoryFragment)
+                            }
+                            true
+                        }
+
+
+
+                    }
                 }
-                true
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Getting Post failed, log a message
+                    Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
+                    // ...
+                }
+
             }
+            ref.addValueEventListener(listener)
+
+
+
+
+
+
 
 
 
