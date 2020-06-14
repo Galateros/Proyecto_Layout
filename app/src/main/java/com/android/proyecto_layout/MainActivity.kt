@@ -1,7 +1,9 @@
 package com.android.proyecto_layout
 
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.app.ActivityCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,4 +20,8 @@ class MainActivity : AppCompatActivity() {
     public fun getUser():String{
         return userId
     }
+
+
+
+
 }

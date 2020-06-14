@@ -1,5 +1,7 @@
 package com.android.proyecto_layout
 
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,7 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,6 +26,9 @@ import kotlinx.android.synthetic.main.fragment_map.*
 class MapFragment : Fragment(),OnMapReadyCallback{
 
     private lateinit var googleMap: GoogleMap
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var lastLocation: Location
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -34,7 +42,10 @@ class MapFragment : Fragment(),OnMapReadyCallback{
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+
         return inflater.inflate(R.layout.fragment_map, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,6 +53,11 @@ class MapFragment : Fragment(),OnMapReadyCallback{
         val peticion: Button = view.findViewById(R.id.petition)
 
         val diractivity:LoginActivity = activity as LoginActivity
+
+
+
+
+
 
         peticion.setOnClickListener{
             view.findNavController().navigate(R.id.peticionFragment)
@@ -52,7 +68,7 @@ class MapFragment : Fragment(),OnMapReadyCallback{
         nfabrica.setOnClickListener{
             // almacenar localización
 
-            diractivity.setLocalizacion("98.34","104.25")
+
 
             val localizationX = diractivity.getLocalizacionX()
             val localizationY = diractivity.getLocalizacionY()
@@ -105,9 +121,32 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                 }
                 true
             }
+
+        }
+        val refLAct: LoginActivity = activity as LoginActivity
+        refLAct.setUpMap()
+        val diractivity:LoginActivity = activity as LoginActivity
+        this.fusedLocationClient = LocationServices.getFusedLocationProviderClient(refLAct)
+
+        // 1
+        map?.isMyLocationEnabled = true
+
+// 2
+        fusedLocationClient.lastLocation.addOnSuccessListener() { location ->
+            // Got last known location. In some rare situations this can be null.
+            // 3
+            if (location != null) {
+                lastLocation = location
+                val currentLatLng = LatLng(location.latitude, location.longitude)
+                map?.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
+                diractivity.setLocalizacion(location.latitude.toString(),location.longitude.toString())
+            }
         }
 
-
     }
+
+
+
+
 
 }

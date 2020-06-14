@@ -1,7 +1,9 @@
 package com.android.proyecto_layout
 
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.app.ActivityCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -21,6 +23,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
     }
 
     /**
@@ -32,6 +36,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
@@ -51,5 +57,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val superama2 = LatLng(19.3581678, -99.1514806)
         mMap.addMarker(MarkerOptions().position(superama2).title("Superama Churubusco"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(superama2))
+
+
     }
+
+
+
+
 }
