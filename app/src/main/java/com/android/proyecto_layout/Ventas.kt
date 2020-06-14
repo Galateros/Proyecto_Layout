@@ -9,5 +9,6 @@ data class Ventas (
     var pagounidad: Int? = null,
     var locationX: String = "",
     var locationY: String = "",
+    var resuelto: Boolean? = null,
     var userid: String = ""
 )

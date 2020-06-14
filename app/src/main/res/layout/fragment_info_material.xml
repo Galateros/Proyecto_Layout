@@ -156,35 +156,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:drawableLeft="@drawable/place_24px"
             android:text="Item"
-            android:textAllCaps="false"
-            android:drawableLeft="@drawable/place_24px"/>
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/produccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:drawableLeft="@drawable/handyman_24px"
             android:text="produccion"
-            android:textAllCaps="false"
-            android:drawableLeft="@drawable/handyman_24px"/>
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/ventas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:drawableLeft="@drawable/local_atm_24px"
             android:text="Ventas"
-            android:textAllCaps="false"
-            android:drawableLeft="@drawable/local_atm_24px"/>
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/perfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:drawableLeft="@drawable/face_24px"
             android:text="Perfil"
-            android:textAllCaps="false"
-            android:drawableLeft="@drawable/face_24px"/>
+            android:textAllCaps="false" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/resolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="524dp"
+        android:layout_marginBottom="31dp"
+        android:text="Resolver"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

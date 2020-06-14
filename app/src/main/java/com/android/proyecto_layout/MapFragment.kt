@@ -17,6 +17,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.database.DataSnapshot
@@ -132,16 +133,19 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                         googleMap.addMarker(
                             MarkerOptions()
                                 .position(fabricas)
-                                .title(""))
+                                .title(postSnapshot.child("/id").getValue().toString())
+                        )
 
                         googleMap.setOnMarkerClickListener { marker ->
+
                             if (marker.isInfoWindowShown) {
                                 marker.hideInfoWindow()
                                 Log.v("WAAAAAAGH","-------------------MarkerClick----------------------------")
                             } else {
                                 marker.showInfoWindow()
                                 Log.v("WAAAAAAGH","-------------------MarkerClick2----------------------------")
-                                diractivity.Setfactory(postSnapshot.child("/id").getValue().toString())
+                                diractivity.Setfactory(marker.title)
+                                //println(diractivity.Getfactory())
                                 view?.findNavController()?.navigate(R.id.infoFactoryFragment)
                             }
                             true
@@ -164,7 +168,7 @@ class MapFragment : Fragment(),OnMapReadyCallback{
 
 
 
-            val ref2 = FirebaseDatabase.getInstance().getReference("/Venta/")
+            val ref2 = FirebaseDatabase.getInstance().getReference("/Ventas/")
             val listener2 = object : ValueEventListener
             {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -177,7 +181,8 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                         googleMap.addMarker(
                             MarkerOptions()
                                 .position(materiales)
-                                .title("")
+                                .title(postSnapshot.child("/id").getValue().toString())
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
                         )
 
                         googleMap.setOnMarkerClickListener { marker ->
@@ -187,7 +192,7 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                             } else {
                                 marker.showInfoWindow()
                                 Log.v("WAAAAAAGH","-------------------MarkerClick2----------------------------")
-                                diractivity.Setfactory(postSnapshot.child("/id").getValue().toString())
+                                diractivity.Setmaterial(marker.title)
                                 view?.findNavController()?.navigate(R.id.infoMaterialFragment)
                             }
                             true

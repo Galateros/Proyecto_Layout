@@ -38,6 +38,7 @@ class InfoMaterialFragment : Fragment() {
         val descr: TextView = view.findViewById(R.id.textView16)
         val material: TextView = view.findViewById(R.id.textView18)
         val cantidad : TextView = view.findViewById(R.id.textView20)
+        val resolver: Button = view.findViewById(R.id.resolver)
 
         val ref = FirebaseDatabase.getInstance().getReference("/Ventas/" + id)
 
@@ -58,6 +59,19 @@ class InfoMaterialFragment : Fragment() {
                     if(postSnapshot.key.toString()=="cantidad"){
                         cantidad.text = postSnapshot.getValue().toString()
                     }
+                    if(postSnapshot.key.toString() == "resuelto") {
+                        if (id != refLAct.Get() && postSnapshot.getValue() == false) {
+                            resolver.setVisibility(View.VISIBLE)
+                        }
+                        if (id == refLAct.Get() || postSnapshot.getValue() == true) {
+                            resolver.setVisibility(View.GONE)
+
+                        }
+                    }
+
+                    resolver.setOnClickListener {
+                        
+                    }
 
                     println(postSnapshot)
 
@@ -72,6 +86,7 @@ class InfoMaterialFragment : Fragment() {
         }
 
         ref.addValueEventListener(listener)
+
 
 
         item.setOnClickListener{

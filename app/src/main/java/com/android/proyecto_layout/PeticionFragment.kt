@@ -35,7 +35,7 @@ class PeticionFragment : Fragment() {
 
             val diractivity:LoginActivity = activity as LoginActivity
 
-            var material:Ventas = Ventas("", "", "", null, null, "", "", "")
+            var material:Ventas = Ventas("", "", "", null, null, "", "", false, "")
             val nombre: EditText = view.findViewById(R.id.editText5)
             val desc: EditText = view.findViewById(R.id.editText4)
             val cantidad: EditText = view.findViewById(R.id.editText7)
