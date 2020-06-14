@@ -33,6 +33,8 @@ class InfoMaterialFragment : Fragment() {
         val item: Button = view.findViewById(R.id.item)
         var database = FirebaseDatabase.getInstance().reference
 
+
+
         val refLAct: LoginActivity = activity as LoginActivity
         val id = refLAct.Getmaterial()
         val descr: TextView = view.findViewById(R.id.textView16)

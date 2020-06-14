@@ -134,6 +134,7 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                             MarkerOptions()
                                 .position(fabricas)
                                 .title(postSnapshot.child("/id").getValue().toString())
+                                .snippet("Fabrica")
                         )
 
                         googleMap.setOnMarkerClickListener { marker ->
@@ -145,6 +146,8 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                                 marker.showInfoWindow()
                                 Log.v("WAAAAAAGH","-------------------MarkerClick2----------------------------")
                                 diractivity.Setfactory(marker.title)
+
+                                println("HOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
                                 //println(diractivity.Getfactory())
                                 view?.findNavController()?.navigate(R.id.infoFactoryFragment)
                             }
@@ -182,6 +185,7 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                             MarkerOptions()
                                 .position(materiales)
                                 .title(postSnapshot.child("/id").getValue().toString())
+                                .snippet("Ventas")
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
                         )
 
@@ -190,10 +194,22 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                                 marker.hideInfoWindow()
                                 Log.v("WAAAAAAGH","-------------------MarkerClick----------------------------")
                             } else {
-                                marker.showInfoWindow()
-                                Log.v("WAAAAAAGH","-------------------MarkerClick2----------------------------")
-                                diractivity.Setmaterial(marker.title)
-                                view?.findNavController()?.navigate(R.id.infoMaterialFragment)
+                                if(marker.snippet == "Ventas"){
+                                    marker.showInfoWindow()
+                                    Log.v("WAAAAAAGH","-------------------MarkerClick2----------------------------")
+                                    diractivity.Setmaterial(marker.title)
+                                    view?.findNavController()?.navigate(R.id.infoMaterialFragment)
+                                }
+                                else{
+                                    marker.showInfoWindow()
+                                    Log.v("WAAAAAAGH","-------------------MarkerClick2----------------------------")
+                                    diractivity.Setfactory(marker.title)
+
+                                    println("HOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                                    //println(diractivity.Getfactory())
+                                    view?.findNavController()?.navigate(R.id.infoFactoryFragment)
+                                }
+
                             }
                             true
                         }
