@@ -59,7 +59,7 @@ class VentasFragment : Fragment() {
 
     public fun getProducts(){
         val ref = FirebaseDatabase.getInstance().getReference("/Ventas")
-
+        val diractivity:LoginActivity = activity as LoginActivity
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
             }
@@ -68,7 +68,9 @@ class VentasFragment : Fragment() {
                 val list = mutableListOf<Ventas>()
                 p0.children.forEach {
                     val product = it.getValue(Ventas::class.java)
-                    list.add(product!!)
+                    if(product!!.userid == diractivity.Get()){
+                        list.add(product!!)
+                    }
 
                 }
                 if (view != null){

@@ -71,6 +71,8 @@ class ProduccionFragment : Fragment() {
         println("There is a product call")
         val ref = FirebaseDatabase.getInstance().getReference("/Fabrica")
         var lateList = mutableListOf<Fabrica>()
+        val diractivity:LoginActivity = activity as LoginActivity
+
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -81,8 +83,12 @@ class ProduccionFragment : Fragment() {
                 val list = mutableListOf<Fabrica>()
                 p0.children.forEach {
                     val product = it.getValue(Fabrica::class.java)
-                    list.add(product!!)
-                    println(product)
+                    if(product!!.userid == diractivity.Get()){
+                        list.add(product!!)
+                        println(product)
+                    }
+
+
                 }
                 if(list.isNotEmpty()){
                     lateList = list;

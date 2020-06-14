@@ -110,6 +110,8 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                     14f
                 )
             )
+
+
             googleMap.setOnMarkerClickListener { marker ->
                 if (marker.isInfoWindowShown) {
                     marker.hideInfoWindow()
@@ -121,6 +123,8 @@ class MapFragment : Fragment(),OnMapReadyCallback{
                 }
                 true
             }
+
+
 
         }
         val refLAct: LoginActivity = activity as LoginActivity
